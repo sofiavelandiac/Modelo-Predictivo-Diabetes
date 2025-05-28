@@ -13,7 +13,7 @@ st.subheader("Autores: Laura Sofía Velandia y María Paula Corredor")
 
 # Imagen
 image = Image.open("diabetes.jpg")
-st.image(image, use_column_width=True)
+st.image(image, use_container_width=True)
 
 # Introducción
 st.markdown("""
@@ -52,11 +52,27 @@ if st.button("Predecir"):
     prediction = model.predict(user_scaled)[0]
 
     if prediction == 1:
-        st.markdown("<div style='background-color:#ffcccc;padding:20px;border-radius:10px'>"
-                    "<h3>🔴 Riesgo de Diabetes</h3></div>", unsafe_allow_html=True)
+        st.markdown("""
+        <div style='background-color:#ff4c4c; padding: 20px; border-radius: 10px; color: white;'>
+            <h3>🔴 Riesgo de Diabetes</h3>
+            <p>Se recomienda consultar a un profesional de salud para un diagnóstico más preciso.</p>
+            <p><strong>Recomendaciones:</strong></p>
+            <ul>
+                <li>Mantener una dieta equilibrada baja en azúcares y grasas saturadas.</li>
+                <li>Realizar actividad física regular (al menos 30 minutos al día).</li>
+                <li>Controlar el peso corporal y evitar el sobrepeso.</li>
+                <li>Evitar el consumo de tabaco y alcohol en exceso.</li>
+                <li>Monitorear periódicamente los niveles de glucosa en sangre.</li>
+            </ul>
+        </div>
+        """, unsafe_allow_html=True)
     else:
-        st.markdown("<div style='background-color:#ccffcc;padding:20px;border-radius:10px'>"
-                    "<h3>🟢 Sin Riesgo de Diabetes</h3></div>", unsafe_allow_html=True)
+        st.markdown("""
+        <div style='background-color:#4CAF50; padding: 20px; border-radius: 10px; color: white;'>
+            <h3>🟢 Sin Riesgo de Diabetes</h3>
+            <p>Continúa manteniendo hábitos saludables para conservar tu bienestar.</p>
+        </div>
+        """, unsafe_allow_html=True)
 
 # Footer
 st.markdown("---")
